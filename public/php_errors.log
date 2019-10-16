@@ -1,0 +1,1 @@
+[13-May-2019 20:12:54 UTC] PHP Notice:  Use of undefined constant MYSQL_ATTR_SSL_VERIFY_SERVER_CERT - assumed 'MYSQL_ATTR_SSL_VERIFY_SERVER_CERT' in /Users/paulwinter/stockQuoteTracker/config/database.php on line 59
