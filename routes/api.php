@@ -24,5 +24,4 @@ Route::get('userPLW', function() {
 
 Route::get('userPLW/{id}', function($id) {
     return \App\User::find($id);
-    
 });
