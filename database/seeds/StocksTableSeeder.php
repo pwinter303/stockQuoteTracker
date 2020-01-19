@@ -14,16 +14,13 @@ class StocksTableSeeder extends Seeder
 
         //$stock = factory(App\Stock::class)->make();
         $stock = factory(App\Stock::class)->create();
-        //var_dump($stock);
 
-//        //
 //        $faker = Faker\Factory::create();
 //        //$faker = Faker::create();
 //        $users = Users::all()->pluck('id')->toArray();
 //        $user_id = $faker->randomElement($users);
 //
 //        DB::table('stocks')->insert([
-//
 //            'id' => $user_id,
 //            'ticker' => Str::random(10),
 //        ]);

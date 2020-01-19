@@ -18,9 +18,14 @@ class CreateStocksTable extends Migration
             $table->foreign('id')->references('id')->on('users');
             $table->string('ticker');
             $table->decimal('price_when_created',12,6);
+            $table->decimal('target_price',12,6);
+            $table->string('watch_type_cd',5);
+            $table->string('watch_status_cd',10);
+            $table->date('effective_date');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

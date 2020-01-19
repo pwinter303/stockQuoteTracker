@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
 
-//    $results = DB::select('select * from stock', array(1));
+    $results = DB::select('select * from stock', array(1));
 
 
 //    Schema::create('stock1',function($tbl){

@@ -15,14 +15,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //plw attempt at using factory....
-        //print "hey............\n";
+        //Make... doesnt save...
         //$user = factory(App\User::class)->make();
         $user = factory(App\User::class)->create();
-        //var_dump($user);
-
-        //
+        // Old version where it was just doing straight inserts..
 //        DB::table('users')->insert([
-//
 //            'first_name' => Str::random(10),
 //            'last_name' => Str::random(10),
 //            'id' => Str::uuid()->toString(),
