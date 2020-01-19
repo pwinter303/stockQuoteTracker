@@ -27,6 +27,8 @@ class CreateUsersStocksXrefTable extends Migration
             ### must set to unsigned so a integer of length 10 is created to match the ID in stocks table
             ##$table->integer('stocks_id');
             $table->unsignedInteger('stocks_id');
+            $table->timestamps();
+
 
             $table->index(["stocks_id"], 'fk_users_stocks_xref_stocks1_idx');
             $table->index(["users_id"], 'fk_users_stocks_xref_stocks2_idx');

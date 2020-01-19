@@ -25,6 +25,7 @@ class CreateStocksTable extends Migration
             $table->increments('id');
             $table->string('ticker', 10)->nullable();
             $table->string('name', 145)->nullable();
+            $table->timestamps();
         });
     }
 

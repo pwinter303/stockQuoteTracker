@@ -25,6 +25,7 @@ class CreateWatchTypesTable extends Migration
             $table->increments('id');
             $table->string('watch_type_name_long', 145)->nullable();
             $table->string('watch_type_name_short', 25)->nullable();
+            $table->timestamps();
         });
     }
 

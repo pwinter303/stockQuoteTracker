@@ -39,6 +39,8 @@ class CreateStockWatchesTable extends Migration
             ## Have to use unsignedInteger so it matches the PK on the parent table
             ##$table->integer('watch_statuses_id');
             $table->unsignedInteger('watch_statuses_id');
+            $table->timestamps();
+
 
             $table->index(["watch_statuses_id"], 'fk_stock_watches_watch_statuses1_idx');
 

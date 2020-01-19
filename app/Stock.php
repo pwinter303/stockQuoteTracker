@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Stock extends Model
 {
     protected $fillable = [
-        'ticker', 'price_when_created'
+        'ticker', 'name'
     ];
 }

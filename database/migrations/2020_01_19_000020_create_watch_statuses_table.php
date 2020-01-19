@@ -25,6 +25,7 @@ class CreateWatchStatusesTable extends Migration
             $table->increments('id');
             $table->string('watch_status_name_long', 145)->nullable();
             $table->string('watch_status_name_short', 25)->nullable();
+            $table->timestamps();
         });
     }
 

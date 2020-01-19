@@ -13,8 +13,8 @@
 
 Route::get('/', function () {
 
-    $results = DB::select('select * from stock', array(1));
-
+    $results = DB::select('select * from stocks', array(1));
+    var_dump($results);
 
 //    Schema::create('stock1',function($tbl){
 //        $tbl->increments('key');
