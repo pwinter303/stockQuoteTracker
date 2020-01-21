@@ -25,10 +25,10 @@ class CreateStockWatchesTable extends Migration
             $table->increments('id');
             ##Change to match PK in parent table
             ##$table->integer('users_stocks_xref_users_id');
-            $table->string('users_stocks_xref_users_id', 36);
+            $table->string('userStocks_users_id', 36);
 
             #$table->integer('users_stocks_xref_stocks_id');
-            $table->unsignedInteger('users_stocks_xref_stocks_id');
+            $table->unsignedInteger('userStocks_stocks_id');
 
             $table->decimal('price_when_created', 12, 6)->nullable();
             $table->decimal('target_price', 12, 6)->nullable();
@@ -44,13 +44,13 @@ class CreateStockWatchesTable extends Migration
 
             $table->index(["watch_statuses_id"], 'fk_stock_watches_watch_statuses1_idx');
 
-            $table->index(["users_stocks_xref_users_id", "users_stocks_xref_stocks_id"], 'fk_stock_watchs_users_stocks_xref1_idx');
+            $table->index(["userStocks_users_id", "userStocks_stocks_id"], 'fk_stock_watchs_userStocks1_idx');
 
             $table->index(["watch_types_id"], 'fk_stock_watches_watch_types1_idx');
 
 
-            $table->foreign('users_stocks_xref_users_id', 'fk_stock_watchs_users_stocks_xref1_idx')
-                ->references('users_id')->on('users_stocks_xref')
+            $table->foreign('userStocks_users_id', 'fk_stock_watchs_users_stocks_xref1_idx')
+                ->references('users_id')->on('userStocks')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 

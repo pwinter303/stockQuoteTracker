@@ -25,3 +25,7 @@ Route::get('/', function () {
 //
     return view('welcome');
 });
+
+//Route::get('/temp','UsersController@index');
+Route::resource('whatever', 'UsersController');
+Route::apiResource('apitest', 'API\UsersController');

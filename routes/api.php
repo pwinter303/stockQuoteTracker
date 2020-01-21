@@ -25,3 +25,15 @@ Route::get('userPLW', function() {
 Route::get('userPLW/{id}', function($id) {
     return \App\User::find($id);
 });
+
+Route::get('stockForUser/{id}', function($id) {
+    return \App\User::find($id);
+});
+
+Route::put('User1/{id}', function (Request $request) {
+    echo "reqeuest is $request";
+});
+
+Route::put('User/{id}', 'API\UsersController@update');
+Route::apiResource('OfficialAPI', 'API\UsersController');
+

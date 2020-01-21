@@ -11,10 +11,7 @@ class StocksTableSeeder extends Seeder
      */
     public function run()
     {
-
-        //$stock = factory(App\Stock::class)->make();
         $stock = factory(App\Stock::class)->create();
-
 //        $faker = Faker\Factory::create();
 //        //$faker = Faker::create();
 //        $users = Users::all()->pluck('id')->toArray();

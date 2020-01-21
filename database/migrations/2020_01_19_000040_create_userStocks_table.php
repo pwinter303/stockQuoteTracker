@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersStocksXrefTable extends Migration
+class CreateUserStocksTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'users_stocks_xref';
+    public $tableName = 'userStocks';
 
     /**
      * Run the migrations.
-     * @table users_stocks_xref
+     * @table userStocks
      *
      * @return void
      */
@@ -30,16 +30,16 @@ class CreateUsersStocksXrefTable extends Migration
             $table->timestamps();
 
 
-            $table->index(["stocks_id"], 'fk_users_stocks_xref_stocks1_idx');
-            $table->index(["users_id"], 'fk_users_stocks_xref_stocks2_idx');
+            $table->index(["stocks_id"], 'fk_userStocks_stocks1_idx');
+            $table->index(["users_id"], 'fk_userStocks_stocks2_idx');
 
 
-            $table->foreign('stocks_id', 'fk_users_stocks_xref_stocks1_idx')
+            $table->foreign('stocks_id', 'fk_userStocks_stocks1_idx')
                 ->references('id')->on('stocks')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('users_id', 'fk_users_stocks_xref_stocks2_idx')
+            $table->foreign('users_id', 'fk_userStocks_stocks2_idx')
                 ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
