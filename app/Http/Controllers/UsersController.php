@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
@@ -16,7 +14,18 @@ class UsersController extends Controller
     public function index()
     {
         //
-        return User::all();
+        return 'Hello World!!!!';
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return 'Goodbye World!!!!';
     }
 
     /**
@@ -28,10 +37,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-        return $request;
-//        return response()->json([
-//            "message" => "record created"
-//        ], 201);
+        return 'STORE....... World!!!!';
+
     }
 
     /**
@@ -46,19 +53,27 @@ class UsersController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $ss)
+    public function update(Request $request, $id)
     {
         //
-//        var_dump($request);
-//        return 'in the UPDATE FUNCTION';
-//        return $request->first_name;
-        return "id:$id,ss:$ss,$request";
+        return 'hi there.... in UPDATE';
     }
 
     /**

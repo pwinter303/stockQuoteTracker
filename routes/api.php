@@ -34,6 +34,8 @@ Route::put('User1/{id}', function (Request $request) {
     echo "reqeuest is $request";
 });
 
-Route::put('User/{id}', 'API\UsersController@update');
+// Working example of passing multiple parameters into PUT
+// Call using this URL in postman: http://127.0.0.1:8000/api/User/1/2
+//Route::put('User/{id}/{ss}', 'API\UsersController@update');
 Route::apiResource('OfficialAPI', 'API\UsersController');
 
