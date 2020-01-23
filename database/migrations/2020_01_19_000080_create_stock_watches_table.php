@@ -22,13 +22,9 @@ class CreateStockWatchesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->uuid('id')->primary();
             ##Change to match PK in parent table
-            ##$table->integer('users_stocks_xref_users_id');
-            $table->string('userStocks_users_id', 36);
-
-            #$table->integer('users_stocks_xref_stocks_id');
-            $table->unsignedInteger('userStocks_stocks_id');
+            $table->string('user_stock_id', 36);
 
             $table->decimal('price_when_created', 12, 6)->nullable();
             $table->decimal('target_price', 12, 6)->nullable();
@@ -44,13 +40,11 @@ class CreateStockWatchesTable extends Migration
 
             $table->index(["watch_statuses_id"], 'fk_stock_watches_watch_statuses1_idx');
 
-            $table->index(["userStocks_users_id", "userStocks_stocks_id"], 'fk_stock_watchs_userStocks1_idx');
-
             $table->index(["watch_types_id"], 'fk_stock_watches_watch_types1_idx');
 
 
-            $table->foreign('userStocks_users_id', 'fk_stock_watchs_users_stocks_xref1_idx')
-                ->references('users_id')->on('userStocks')
+            $table->foreign('user_stock_id', 'fk_stock_watchs_usersStocks1_idx')
+                ->references('id')->on('user_stocks')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 

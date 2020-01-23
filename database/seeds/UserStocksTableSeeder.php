@@ -11,6 +11,6 @@ class UserStocksTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = factory(App\Userstock::class)->create();
+        $user = factory(App\UserStock::class)->create();
     }
 }

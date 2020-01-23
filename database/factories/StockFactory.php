@@ -18,7 +18,8 @@ $factory->define(Stock::class, function (Faker $faker) {
     return [
 //        'id' => $final_uuid,
         'ticker' => $faker->asciify('****'),
-        'name' =>$faker->name
+        'name' =>$faker->name,
+        'name' =>$faker->company
 //        'price_when_created' => $faker->randomNumber(5)
     ];
 });
