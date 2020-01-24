@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWatchTypesTable extends Migration
+class CreateTriggerTypesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'watch_types';
+    public $tableName = 'trigger_types';
 
     /**
      * Run the migrations.
-     * @table watch_types
+     * @table trigger_types
      *
      * @return void
      */
@@ -23,8 +23,8 @@ class CreateWatchTypesTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('watch_type_name_long', 145)->nullable();
-            $table->string('watch_type_name_short', 25)->nullable();
+            $table->string('name_long', 145)->nullable();
+            $table->string('name_short', 25)->nullable();
             $table->timestamps();
         });
     }

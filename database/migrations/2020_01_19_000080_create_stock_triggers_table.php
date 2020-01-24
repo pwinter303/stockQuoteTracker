@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStockWatchesTable extends Migration
+class CreateStockTriggersTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'stock_watches';
+    public $tableName = 'stock_triggers';
 
     /**
      * Run the migrations.
-     * @table stock_watches
+     * @table stock_triggers
      *
      * @return void
      */
@@ -29,18 +29,18 @@ class CreateStockWatchesTable extends Migration
             $table->decimal('price_when_created', 12, 6)->nullable();
             $table->decimal('target_price', 12, 6)->nullable();
             ## Have to use unsignedInteger so it matches the PK on the parent table
-            #$table->integer('watch_types_id');
-            $table->unsignedInteger('watch_types_id');
+            #$table->integer('trigger_types_id');
+            $table->unsignedInteger('trigger_type_id');
             $table->date('effective_date')->nullable();
             ## Have to use unsignedInteger so it matches the PK on the parent table
-            ##$table->integer('watch_statuses_id');
-            $table->unsignedInteger('watch_statuses_id');
+            ##$table->integer('trigger_statuses_id');
+            $table->unsignedInteger('trigger_status_id');
             $table->timestamps();
 
 
-            $table->index(["watch_statuses_id"], 'fk_stock_watches_watch_statuses1_idx');
+            $table->index(["trigger_status_id"], 'fk_stock_triggers_trigger_statuses1_idx');
 
-            $table->index(["watch_types_id"], 'fk_stock_watches_watch_types1_idx');
+            $table->index(["trigger_type_id"], 'fk_stock_triggers_trigger_types1_idx');
 
 
             $table->foreign('user_stock_id', 'fk_stock_watchs_usersStocks1_idx')
@@ -48,13 +48,13 @@ class CreateStockWatchesTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('watch_types_id', 'fk_stock_watches_watch_types1_idx')
-                ->references('id')->on('watch_types')
+            $table->foreign('trigger_type_id', 'fk_stock_triggers_trigger_types1_idx')
+                ->references('id')->on('trigger_types')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('watch_statuses_id', 'fk_stock_watches_watch_statuses1_idx')
-                ->references('id')->on('watch_statuses')
+            $table->foreign('trigger_status_id', 'fk_stock_triggers_trigger_statuses1_idx')
+                ->references('id')->on('trigger_statuses')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

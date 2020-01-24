@@ -12,17 +12,17 @@ class WatchTypesTableSeeder extends Seeder
     public function run()
     {
         //Delete all the records... then add them.....
-        DB::table('watch_statuses')->delete();
+        DB::table('trigger_statuses')->delete();
 
-        DB::table('watch_statuses')->insert([
+        DB::table('trigger_statuses')->insert([
             'id' => 1,
-            'watch_status_name_long' => 'active - still active',
-            'watch_status_name_short' => 'active'
+            'name_long' => 'active - still active',
+            'name_short' => 'active'
         ]);
-        DB::table('watch_statuses')->insert([
+        DB::table('trigger_statuses')->insert([
             'id' => 2,
-            'watch_status_name_long' => 'closed.... no longer used',
-            'watch_status_name_short' => 'dead'
+            'name_long' => 'closed.... no longer used',
+            'name_short' => 'dead'
         ]);
     }
 
