@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class WatchTypesTableSeeder extends Seeder
+class HelpersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,10 +24,21 @@ class WatchTypesTableSeeder extends Seeder
             'name_long' => 'closed.... no longer used',
             'name_short' => 'dead'
         ]);
+
+        //Delete all the records... then add them.....
+        DB::table('trigger_types')->delete();
+
+        DB::table('trigger_types')->insert([
+            'id' => 1,
+            'name_long' => 'Percent off High',
+            'name_short' => 'Pct off High'
+        ]);
+        DB::table('trigger_types')->insert([
+            'id' => 2,
+            'name_long' => 'Fixed Price',
+            'name_short' => 'Fixed Price'
+        ]);
+
     }
-
-
-
-
 
 }
