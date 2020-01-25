@@ -39,3 +39,6 @@ Route::put('User1/{id}', function (Request $request) {
 //Route::put('User/{id}/{ss}', 'API\UsersController@update');
 Route::apiResource('OfficialAPI', 'API\UsersController');
 
+//http://127.0.0.1:8000/api/stocks  returns ALL the stocks...
+Route::apiResource('stocks', 'API\StocksController');
+

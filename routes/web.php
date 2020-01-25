@@ -11,21 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+//added for REACT....
+Route::view('/{path?}', 'app');
 
-    $results = DB::select('select * from stocks', array(1));
-    var_dump($results);
-
-//    Schema::create('stock1',function($tbl){
-//        $tbl->increments('key');
-//        $tbl->string('ticker',10);
-//        $tbl->timestamps();
-//    }
-//    );
+//Route::get('/', function () {
 //
-    return view('welcome');
-});
-
+//    $results = DB::select('select * from stocks', array(1));
+//    var_dump($results);
+//    return view('welcome');
+//});
+//
 //Route::get('/temp','UsersController@index');
-Route::resource('whatever', 'UsersController');
-Route::apiResource('apitest', 'API\UsersController');
+//Route::resource('whatever', 'UsersController');
+//Route::apiResource('apitest', 'API\UsersController');
