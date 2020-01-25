@@ -42,3 +42,12 @@ Route::apiResource('OfficialAPI', 'API\UsersController');
 //http://127.0.0.1:8000/api/stocks  returns ALL the stocks...
 Route::apiResource('stocks', 'API\StocksController');
 
+//Cant use the generic apiResource since we have to pass in multiple parameters
+//Route::apiResource('userstocks', 'API\UserStocksController');
+
+//NOTE: api is added
+//http://127.0.0.1:8000/api/user/0f4a78c4-e172-4d56-8627-83b66da01411/userstocks/
+Route::get('user/{user_id}/userstocks/', 'API\UserStocksController@index');
+Route::get('user/{user_id}/userstocks/{id}', 'API\UserStocksController@show');
+Route::delete('user/{user_id}/userstocks/{id}', 'API\UserStocksController@delete');
+

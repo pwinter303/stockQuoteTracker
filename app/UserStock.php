@@ -13,5 +13,9 @@ class UserStock extends Model
         'user_id', 'stock_id'
     ];
 
+    public function stockTriggers()
+    {
+        return $this->hasMany(StockTrigger::class);
+    }
 
 }

@@ -9,4 +9,5 @@ class Stock extends Model
     protected $fillable = [
         'ticker', 'name'
     ];
+
 }
