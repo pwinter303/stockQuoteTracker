@@ -15,7 +15,6 @@ class UserStocksList extends Component {
 
     componentDidMount () {
         //get id from the URL
-        // const { handle } = this.props.match.params
         const userId = this.props.match.params.id
 
         console.log('this is userId' + userId);
