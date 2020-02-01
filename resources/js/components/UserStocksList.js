@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import UserStockCreate from "./UserStockCreate";
 
 class UserStocksList extends Component {
     constructor () {
@@ -17,7 +18,7 @@ class UserStocksList extends Component {
         //get id from the URL
         const userId = this.props.match.params.id
 
-        console.log('this is userId' + userId);
+        // console.log('this is userId' + userId);
 
         //0f4a78c4-e172-4d56-8627-83b66da01411
         // const url = '/api/user/' + userId + '/userstocks'
@@ -34,34 +35,31 @@ class UserStocksList extends Component {
 
     render () {
         const { userstocks } = this.state
+        const userId = this.props.match.params.id
         return (
             <div className='container py-4'>
                 <div className='row justify-content-center'>
                     <div className='col-md-8'>
                         <div className='card'>
-                            <div className='card-header'>User Stocks</div>
+                            <div className='card-header'>Stocks I'm Watching</div>
                             <div className='card-body'>
-                                <Link className='btn btn-primary btn-sm mb-3' to='/create'>
-                                    Create new userstock
+                                <Link className='btn btn-primary btn-sm mb-3' to={`/user/${userId}/stockadd`}>
+                                    Add Stock
                                 </Link>
                                 <ul className='list-group list-group-flush'>
                                     {userstocks.map(userstock => (
                                         <Link
                                             className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
-                                            to={`/${userstock.id}`}
+                                            to={`/userstock/${userstock.id}/stocktriggers`}
                                             key={userstock.id}
                                         >
-                                            {userstock.name}
+                                            {userstock.ticker}
                                             ------------
-                                            {userstock.id}
-                                            -----------
-                                            {userstock.stock_id}
-                                            -----------
-                                            {userstock.user_id}
+                                            {userstock.name}
                                             -----------
                                             <span className='badge badge-primary badge-pill'>
-                            {userstock.stock_id}
-                          </span>
+                                                Add or Change Triggers
+                                            </span>
                                         </Link>
                                     ))}
                                 </ul>

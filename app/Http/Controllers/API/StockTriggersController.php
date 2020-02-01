@@ -13,11 +13,20 @@ class StockTriggersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_stock_id)
     {
         //
-        return StockTrigger::All();
+        $stockTrigger = new StockTrigger();
+        return  $stockTrigger->getUserStockTriggers($user_stock_id);
+
+
     }
+// original....
+//    public function index()
+//    {
+//        //
+//        return StockTrigger::All();
+//    }
 
     /**
      * Store a newly created resource in storage.

@@ -72864,7 +72864,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StocksList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./StocksList */ "./resources/js/components/StocksList.js");
 /* harmony import */ var _UserStocksList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UserStocksList */ "./resources/js/components/UserStocksList.js");
 /* harmony import */ var _SingleUserStock__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SingleUserStock */ "./resources/js/components/SingleUserStock.js");
-/* harmony import */ var _UsersList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./UsersList */ "./resources/js/components/UsersList.js");
+/* harmony import */ var _UserStockCreate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./UserStockCreate */ "./resources/js/components/UserStockCreate.js");
+/* harmony import */ var _UserStockTriggersList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./UserStockTriggersList */ "./resources/js/components/UserStockTriggersList.js");
+/* harmony import */ var _UsersList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./UsersList */ "./resources/js/components/UsersList.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72882,6 +72884,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -72912,12 +72916,18 @@ function (_Component) {
         component: _StocksList__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/users",
-        component: _UsersList__WEBPACK_IMPORTED_MODULE_7__["default"]
+        component: _UsersList__WEBPACK_IMPORTED_MODULE_9__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/user/:id/userstocks",
         component: _UserStocksList__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/:id",
+        path: "/userstock/:id/stocktriggers",
+        component: _UserStockTriggersList__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/user/:id/stockadd",
+        component: _UserStockCreate__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/stock/:id",
         component: _SingleUserStock__WEBPACK_IMPORTED_MODULE_6__["default"]
       }))));
     }
@@ -73145,19 +73155,20 @@ function (_Component) {
         className: "card-header"
       }, "All stocks"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "btn btn-primary btn-sm mb-3",
-        to: "/create"
-      }, "Create new stock"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush"
       }, stocks.map(function (stock) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
-          to: "/".concat(stock.id),
+          to: "stock/".concat(stock.id),
           key: stock.id
-        }, stock.name, stock.ticker, stock.ticker, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "col-md-7"
+        }, stock.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "col-md-2"
+        }, stock.ticker), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
           className: "badge badge-primary badge-pill"
-        }, stock.ticker));
+        }, "View Users Watching Stock"));
       })))))));
     }
   }]);
@@ -73169,10 +73180,79 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/UserStocksList.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/UserStocksList.js ***!
-  \***************************************************/
+/***/ "./resources/js/components/UserStockCreate.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/UserStockCreate.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UserStockCreate; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var UserStockCreate =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(UserStockCreate, _Component);
+
+  function UserStockCreate() {
+    _classCallCheck(this, UserStockCreate);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(UserStockCreate).apply(this, arguments));
+  }
+
+  _createClass(UserStockCreate, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, "User Stock Create"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, "Placeholder until the real page is done.....")))));
+    }
+  }]);
+
+  return UserStockCreate;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/UserStockTriggersList.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/UserStockTriggersList.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73205,6 +73285,116 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var UserStockTriggersList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(UserStockTriggersList, _Component);
+
+  function UserStockTriggersList() {
+    var _this;
+
+    _classCallCheck(this, UserStockTriggersList);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserStockTriggersList).call(this));
+    _this.state = {
+      stocktriggers: []
+    };
+    return _this;
+  } //NOTE.... must use the backticks and NOT regular quotes...
+
+
+  _createClass(UserStockTriggersList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      //get id from the URL
+      var user_stock_id = this.props.match.params.id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/userstock/".concat(user_stock_id, "/stocktriggers")).then(function (response) {
+        _this2.setState({
+          stocktriggers: response.data
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var stocktriggers = this.state.stocktriggers;
+      var user_stock_id = this.props.match.params.id;
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container py-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }, "Triggers"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-primary btn-sm mb-3",
+        to: "/userstock/".concat(user_stock_id, "/triggeradd")
+      }, "Add Trigger"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "list-group list-group-flush"
+      }, stocktriggers.map(function (stocktrigger) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
+          to: "/userstock/".concat(stocktrigger.id, "/stocktriggers"),
+          key: stocktrigger.id
+        }, stocktrigger.ticker, "------------", stocktrigger.name, "-----------", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+          className: "badge badge-primary badge-pill"
+        }, "Change Triggers"));
+      })))))));
+    }
+  }]);
+
+  return UserStockTriggersList;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (UserStockTriggersList);
+
+/***/ }),
+
+/***/ "./resources/js/components/UserStocksList.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/UserStocksList.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _UserStockCreate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserStockCreate */ "./resources/js/components/UserStockCreate.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
 var UserStocksList =
 /*#__PURE__*/
 function (_Component) {
@@ -73228,8 +73418,8 @@ function (_Component) {
       var _this2 = this;
 
       //get id from the URL
-      var userId = this.props.match.params.id;
-      console.log('this is userId' + userId); //0f4a78c4-e172-4d56-8627-83b66da01411
+      var userId = this.props.match.params.id; // console.log('this is userId' + userId);
+      //0f4a78c4-e172-4d56-8627-83b66da01411
       // const url = '/api/user/' + userId + '/userstocks'
       // console.log('this is url' + url);
       // axios.get(url).then(response => {
@@ -73245,6 +73435,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       var userstocks = this.state.userstocks;
+      var userId = this.props.match.params.id;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -73255,21 +73446,21 @@ function (_Component) {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-header"
-      }, "User Stocks"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Stocks I'm Watching"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "btn btn-primary btn-sm mb-3",
-        to: "/create"
-      }, "Create new userstock"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        to: "/user/".concat(userId, "/stockadd")
+      }, "Add Stock"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group list-group-flush"
       }, userstocks.map(function (userstock) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
-          to: "/".concat(userstock.id),
+          to: "/userstock/".concat(userstock.id, "/stocktriggers"),
           key: userstock.id
-        }, userstock.name, "------------", userstock.id, "-----------", userstock.stock_id, "-----------", userstock.user_id, "-----------", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+        }, userstock.ticker, "------------", userstock.name, "-----------", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
           className: "badge badge-primary badge-pill"
-        }, userstock.stock_id));
+        }, "Add or Change Triggers"));
       })))))));
     }
   }]);

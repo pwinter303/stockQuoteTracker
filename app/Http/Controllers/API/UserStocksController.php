@@ -16,8 +16,10 @@ class UserStocksController extends Controller
     public function index($user_id)
     {
         //
-        return UserStock::where('user_id','=',$user_id)->get();
-//        return UserStock::where('stock_id','=',4)->get();
+        $userStock = new UserStock();
+        return  $userStock->getUserStocks($user_id);
+
+
     }
 
     /**

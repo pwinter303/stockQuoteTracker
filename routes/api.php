@@ -54,3 +54,4 @@ Route::get('user/{user_id}/userstocks/', 'API\UserStocksController@index');
 Route::get('user/{user_id}/userstocks/{id}', 'API\UserStocksController@show');
 Route::delete('user/{user_id}/userstocks/{id}', 'API\UserStocksController@delete');
 
+Route::get('userstock/{user_stock_id}/stocktriggers/', 'API\StockTriggersController@index');

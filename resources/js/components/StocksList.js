@@ -27,21 +27,24 @@ class StocksList extends Component {
                         <div className='card'>
                             <div className='card-header'>All stocks</div>
                             <div className='card-body'>
-                                <Link className='btn btn-primary btn-sm mb-3' to='/create'>
-                                    Create new stock
-                                </Link>
+                                {/*<Link className='btn btn-primary btn-sm mb-3' to='/create'>*/}
+                                {/*    Create new stock*/}
+                                {/*</Link>*/}
                                 <ul className='list-group list-group-flush'>
                                     {stocks.map(stock => (
                                         <Link
                                             className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
-                                            to={`/${stock.id}`}
+                                            to={`stock/${stock.id}`}
                                             key={stock.id}
                                         >
+                                            <div className='col-md-7'>
                                             {stock.name}
+                                            </div>
+                                            <div className='col-md-2'>
                                             {stock.ticker}
-                                            {stock.ticker}
+                                            </div>
                                             <span className='badge badge-primary badge-pill'>
-                            {stock.ticker}
+                            View Users Watching Stock
                           </span>
                                         </Link>
                                     ))}
